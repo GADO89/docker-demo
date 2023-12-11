@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class Controller {
+    @Value("${PHASE}")
+    private String phase;
+
+    @Value("${server.port}")
+    private String port;
 
     @Value("${name}")
     private String name;
@@ -15,6 +20,6 @@ public class Controller {
     private String age;
     @GetMapping("/getMessage")
     public String getMessage(){
-        return "Hi Student "+name+" with age "+age;
+        return "Hi Student "+ name +" WITH age "+ age +" WITH "+ port;
     }
 }
