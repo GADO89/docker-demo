@@ -1,15 +1,29 @@
-version: "3"
+version: '3.8'
+
 services:
   docker-demo:
-    build:
-       context: .
-       target: development
+    build: # Use the Dockerfile from the current directory to build container.
+      context: .
+      target: development
     volumes:
-      - .:/docker-demo:ro
+        - .:/docker-demo:ro
     ports:
       - "9090:9090"
     environment:
-      - PORTS=9090
-      - PHASE_TYPE=DEV
-
-
+     - PORTS=9090
+     - PHASE_TYPE=DEV
+     - MYSQL_HOST=mysqldb
+     - MYSQL_PORT=3306
+     - MYSQL_DB=club
+     - MYSQL_USER_NAME=root
+     - MYSQL_PASSWORD=root
+  mysqldb-docker:
+    image: mysql:latest # use latest version of mysql
+    restart: always
+    volumes:
+    -  /home/user/Desktop/db:/var/lib/mysql
+    environment: # add default values, see docs for more info.
+      MYSQL_DATABASE: club # create this database on startup
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+    - "3307:3306"
