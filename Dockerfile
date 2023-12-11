@@ -14,7 +14,7 @@
 FROM openjdk:17-alpine as base
 FROM base as development
 COPY . /docker-demo
-EXPOSE 4000
+#EXPOSE 8080
 ENTRYPOINT ["java","-jar","/docker-demo/target/docker-demo-0.0.1-SNAPSHOT.jar"]
 FROM base as production
 COPY ./target/docker-demo-0.0.1-SNAPSHOT.jar /docker-demo/docker-demo.jar

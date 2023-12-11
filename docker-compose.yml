@@ -6,4 +6,8 @@ services:
     volumes:
       - .:/student:ro
     ports:
-      - "4000:4000"
+      - "9090:9090"
+    env_file:
+      - ./.env
+
+
