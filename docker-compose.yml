@@ -1,0 +1,8 @@
+version: "3"
+services:
+  docker-demo:
+    container_name: student-con
+    env_file:
+      - ./.env
+
+

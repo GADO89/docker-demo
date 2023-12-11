@@ -1,14 +1,13 @@
 version: "3"
 services:
-  student:
-    container_name: student-con
-    build: .
+  docker-demo:
+    build:
+      context: .
+      target: production
     ports:
       - "7070:7070"
     environment:
       - PORTS=7070
       - PHASE_TYPE=PRO
-    env_file:
-      - ./.env
 
 
